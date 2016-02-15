@@ -2,6 +2,7 @@
 A tree menu developed with pure JavaScript using object oriented approach.
 
 In order to be able to view the project locally:
+
 1. Install NodeJS - nodejs.org
 2. cmd->"npm install -g static-server"
 3. Then go to the project folder and to 'static-server' in the command promt
