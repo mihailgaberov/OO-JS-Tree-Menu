@@ -60,16 +60,14 @@
          * Draws the menu according to the passed json data
          */
         var draw = function() {
-            var strMenuHtml = "";
+            var ulMenu = document.createElement("ul");
 
             var i;
             for (i = 0; i < that.arrMainMenuItems.length; i++) {
-                strMenuHtml += that.arrMainMenuItems[i].draw();
+                ulMenu.appendChild(that.arrMainMenuItems[i].draw());
             }
 
             var container = document.getElementById("menu-container");
-            var ulMenu = document.createElement("ul");
-            ulMenu.innerHTML = strMenuHtml;
             container.appendChild(ulMenu);
 
             attachListeners();
@@ -153,21 +151,35 @@
      * @returns {string}
      */
     MenuItem.prototype.draw = function draw() {
-        var strHtml = "<li id='" + this.id + "' class='" + this.cssClass + "'>" + this.description + "</li>";
+        var li = document.createElement('li');
+        li.setAttribute("id", this.id);
+        li.setAttribute("class", this.cssClass);
+        li.innerHTML = this.description;
 
         // Check for submenu nodes
         var arrSubMenu = this.menu;
         if (arrSubMenu !== null) {
-            strHtml = "<li style='border-right: 5px solid orange;' id='" + this.id + "' class='" + this.cssClass + "'>" + this.description +
-                "<ul id='" + this.id + "' style='display: none;'>";
+            li.setAttribute("id", this.id);
+            li.setAttribute("class", this.cssClass);
+            li.setAttribute("style", "border-right: 5px solid orange");
+            li.innerHTML = this.description;
+
+            var ul = document.createElement("ul");
+            ul.setAttribute("id", this.id);
+            ul.setAttribute("style", "display: none");
+
             var j;
             for (j = 0; j < arrSubMenu.length; j++) {
-                strHtml += "<li id='" + arrSubMenu[j].id + "' class='" + arrSubMenu[j].cssClass + "'>" + arrSubMenu[j].description + "</li>";
+                var innerLi = document.createElement("li");
+                innerLi.setAttribute("id", arrSubMenu[j].id);
+                innerLi.setAttribute("class", arrSubMenu[j].cssClass);
+                innerLi.innerHTML = arrSubMenu[j].description;
+                ul.appendChild(innerLi);
             }
-            strHtml += "</ul></li>";
+            li.appendChild(ul);
         }
-
-        return strHtml;
+        
+        return li;
     };
 
 
