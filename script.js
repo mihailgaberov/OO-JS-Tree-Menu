@@ -52,8 +52,6 @@
                     }
                 }
             }
-
-            draw();
         };
 
         /**
@@ -122,6 +120,7 @@
                 }
 
                 convertData(actualJson);
+                draw();
             });
         };
     }
