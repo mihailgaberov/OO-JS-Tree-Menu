@@ -135,13 +135,9 @@
      * @constructor
      */
     function MenuItem(value) {
-        this.id = value.id;
-        this.leaf = value.leaf;
-        this.description = value.description;
-        this.link = value.link;
-        this.content = value.content;
-        this.cssClass = value.cssClass;
-        this.menu = value.menu;
+        for (var key in value) {
+            this[key] = value[key];
+        }
     }
 
     /**
