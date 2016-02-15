@@ -67,8 +67,6 @@
 
             var container = document.getElementById("menu-container");
             container.appendChild(ulMenu);
-
-            attachListeners();
         };
 
         /**
@@ -121,6 +119,7 @@
 
                 convertData(actualJson);
                 draw();
+                attachListeners();
             });
         };
     }
