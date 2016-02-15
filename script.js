@@ -73,16 +73,12 @@
          * Attaches event listeners to all menu items
          */
         var attachListeners = function() {
-            var arrElements = document.getElementsByTagName('li');
+            var elMenu = document.getElementById("menu-container");
 
-            var i;
-            for (i = 0; i < arrElements.length; i++) {
-                var elementId = arrElements[i].getAttribute("id");
-                document.getElementById(elementId).addEventListener("click", function (e) {
-                    displayContent(e.currentTarget.id);
-                    e.stopPropagation();
-                });
-            }
+            elMenu.addEventListener("click", function(e) {
+                if (e.target.id !== "")
+                    displayContent(e.target.id);
+            });
         };
 
         var displayContent = function(itemId) {
