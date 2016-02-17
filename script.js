@@ -15,7 +15,7 @@
         var that = this;
         that.arrAllMenuObjects = [];
         that.arrMainMenuItems = [];
-        that.elMenuContainer = document.getElementById("menu-container");
+        // that.elMenuContainer = document.getElementById("menu-container");
 
         var loadJSON = function (callback) {
             var xobj = new XMLHttpRequest();
@@ -55,6 +55,13 @@
             }
         };
 
+        var getContainer = function() {
+            if (!that.container)
+                that.container = document.getElementById("menu-container");
+
+            return that.container;
+        };
+
         /**
          * Draws the menu according to the passed json data
          */
@@ -66,23 +73,17 @@
                 ulMenu.appendChild(that.arrMainMenuItems[i].draw());
             }
 
-            if (that.elMenuContainer != null) {
-                that.elMenuContainer.appendChild(ulMenu);
-            } else {
-                throw new Error("There is no menu container element in the DOM.");
-            }
+            getContainer().appendChild(ulMenu);
         };
 
         /**
          * Attaches event listeners to all menu items
          */
         var attachListeners = function() {
-            if (that.elMenuContainer !== null) {
-                that.elMenuContainer.addEventListener("click", function(e) {
-                    if (e.target.id !== "")
-                        displayContent(e.target.id);
-                });
-            }
+            getContainer().addEventListener("click", function(e) {
+                if (e.target.id !== "")
+                       displayContent(e.target.id);
+            });
         };
 
         var displayContent = function(itemId) {
