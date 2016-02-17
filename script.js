@@ -15,7 +15,6 @@
         var that = this;
         that.arrAllMenuObjects = [];
         that.arrMainMenuItems = [];
-        // that.elMenuContainer = document.getElementById("menu-container");
 
         var loadJSON = function (callback) {
             var xobj = new XMLHttpRequest();
@@ -58,6 +57,9 @@
         var getContainer = function() {
             if (!that.container)
                 that.container = document.getElementById("menu-container");
+
+            if (that.container === null)
+                throw new Error("There is no menu container element in the DOM.");
 
             return that.container;
         };
