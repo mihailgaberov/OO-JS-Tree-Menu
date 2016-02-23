@@ -34,7 +34,6 @@ gulp.task('build-css', function() {
   return gulp.src('src/sass/**/*.scss')
     .pipe(sourcemaps.init())
     .pipe(sass())
-    // .pipe(concat('app.css'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(output.stylesheets));
 });
