@@ -23,7 +23,9 @@
             xobj.open("GET", "menu.json", true);
 
             xobj.onreadystatechange = function () {
-                if (xobj.readyState == 4 && xobj.status == "200") {
+                console.log('typeof xobj.readyState: ', typeof xobj.readyState, xobj.readyState);
+                console.log('typeof xobj.status: ', typeof xobj.status, xobj.status);
+                if (xobj.readyState === 4 && xobj.status === 200) {
                     callback(xobj.responseText);
                 }
             };
@@ -116,13 +118,12 @@
                 // Parse JSON string into object
                 try {
                     var actualJson = JSON.parse(response);
+                    convertData(actualJson);
+                    draw();
+                    attachListeners();
                 } catch (e) {
                     throw new Error("Failed loading JSON source file.");
                 }
-
-                convertData(actualJson);
-                draw();
-                attachListeners();
             });
         };
     }
@@ -135,7 +136,8 @@
      */
     function MenuItem(value) {
         for (var key in value) {
-            this[key] = value[key];
+            if (key in value)
+                this[key] = value[key];
         }
     }
 

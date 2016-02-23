@@ -1,0 +1,32 @@
+{
+  "name": "tree-menu",
+  "version": "0.1.0",
+  "description": "A tree menu developed with pure JS using object oriented approach.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mihailgaberov/OO-JS-Tree-menu.git"
+  },
+  "keywords": [
+    "oop",
+    "js",
+    "object-oriented",
+    "javascript"
+  ],
+  "author": "Mihail Gaberov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mihailgaberov/OO-JS-Tree-menu/issues"
+  },
+  "homepage": "https://github.com/mihailgaberov/OO-JS-Tree-menu#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-jshint": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "jshint": "^2.9.1",
+    "jshint-stylish": "^2.1.0"
+  }
+}
