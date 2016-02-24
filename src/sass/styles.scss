@@ -1,9 +1,13 @@
+$background-color: black;
+$border-color: dimgray;
+$foreground-color: white;
+
 ul {
     width: 200px;
-    color: white;;
-    background-color: black;
+    color: $foreground-color;
+    background-color: $background-color;
     li {
-        border: 1px solid dimgray;
+        border: 1px solid $border-color;
         padding: 10px 10px;
         cursor: pointer;
         list-style: none;
