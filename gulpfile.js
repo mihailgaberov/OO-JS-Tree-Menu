@@ -1,6 +1,6 @@
 // Grab our gulp packages
 var gulp  = require('gulp'),
-	gutil = require('gulp-util');
+	  gutil = require('gulp-util'),
     jshint = require('gulp-jshint'),
     concat = require('gulp-concat'),
     sourcemaps = require('gulp-sourcemaps'),
@@ -10,12 +10,12 @@ var gulp  = require('gulp'),
 
 var input = {
     	'sass': 'src/scss/**/*.scss',
-      	'javascript': 'src/js/**/*.js',
+      'javascript': 'src/js/**/*.js',
     },
 
     output = {
     	'stylesheets': 'build/css',
-      	'javascript': 'build/js'
+      'javascript': 'build/js'
     };
 
 
@@ -24,14 +24,14 @@ gulp.task('default', ['watch']);
 
 // Configure the jshint task
 gulp.task('jshint', function() {
-	return gulp.src('src/js/*.js')
+	return gulp.src(input.javascript)
 	.pipe(jshint())
 	.pipe(jshint.reporter('jshint-stylish'));
 });
 
 /* compile scss files */
 gulp.task('build-css', function() {
-  return gulp.src('src/sass/**/*.scss')
+  return gulp.src(input.sass)
     .pipe(sourcemaps.init())
     .pipe(sass())
     .pipe(sourcemaps.write())
